@@ -96,40 +96,44 @@ comment on column data_puc.name is 'Nombre de la cuenta';
 create table data_ciiu_sections
 (
   "code" char(1) primary key,
-  "name" varchar(500) not null
+  "description" varchar(500) not null
 );
 comment on table data_ciiu_sections is 'Secciones de la CIIU';
 comment on column data_ciiu_sections.code is 'Código de la sección';
-comment on column data_ciiu_sections.name is 'Nombre de la sección';
+comment on column data_ciiu_sections.description is 'Nombre de la sección';
 
 create table data_ciiu_divisions
 (
   "code" char(2) primary key,
-  "section" char(1),
-  "name" varchar(500)
+  "section_code" char(1) not null references data_ciiu_sections(code),
+  "description" varchar(500)
 );
 comment on table data_ciiu_divisions is 'Divisiones de la CIIU';
 comment on column data_ciiu_divisions.code is 'Código de la división';
-comment on column data_ciiu_divisions.section is 'Sección a la que pertenece';
-comment on column data_ciiu_divisions.name is 'Nombre de la división';
+comment on column data_ciiu_divisions.section_code is 'Sección a la que pertenece';
+comment on column data_ciiu_divisions.description is 'Descripción de la división';
 
 create table data_ciiu_groups
 (
   "code" char(3) primary key,
-  "name" varchar(500)
+  "division_code" char(2) not null references data_ciiu_divisions(code),
+  "description" varchar(500)
 );
 comment on table data_ciiu_groups is 'Grupos de la CIIU';
 comment on column data_ciiu_groups.code is 'Código del grupo';
-comment on column data_ciiu_groups.name is 'Nombre del grupo';
+comment on column data_ciiu_groups.division_code is 'División a la que pertenece';
+comment on column data_ciiu_groups.description is 'Descripción del grupo';
 
 create table data_ciiu_codes
 (
   "code" char(4) primary key,
-  "name" varchar(500)
+  "group_code" char(3) not null references data_ciiu_groups(code),
+  "description" varchar(500)
 );
 comment on table data_ciiu_codes is 'Códigos de la CIIU';
 comment on column data_ciiu_codes.code is 'Código del código';
-comment on column data_ciiu_codes.name is 'Nombre del código';
+comment on column data_ciiu_codes.group_code is 'Grupo al que pertenece';
+comment on column data_ciiu_codes.description is 'Descripción del código';
 
 -- Registro de las UVTs
 create table data_uvt (
