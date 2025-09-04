@@ -192,17 +192,17 @@ comment on column data_unspsc.code is 'Código del producto o servicio';
 comment on column data_unspsc.class is 'Clase a la que pertenece';
 comment on column data_unspsc.name is 'Nombre del producto o servicio';
 
-create table data_identification_documents 
+create table data_tax_id_types 
 (
   "code" char(2) primary key,
   "name" varchar(100) not null,
   "short_name" varchar(5)
 );
 
-comment on table data_identification_documents is 'Documentos de identificación para Colombia';
-comment on column data_identification_documents.code is 'Código del documento asignado por la DIAN';
-comment on column data_identification_documents.name is 'Nombre del tipo de documento';
-comment on column data_identification_documents.short_name is 'Nombre corto del documento tipo de documento';
+comment on table data_tax_id_types is 'Documentos de identificación para Colombia';
+comment on column data_tax_id_types.code is 'Código del documento asignado por la DIAN';
+comment on column data_tax_id_types.name is 'Nombre del tipo de documento';
+comment on column data_tax_id_types.short_name is 'Nombre corto del documento tipo de documento';
 
 create table data_location_departments
 (
