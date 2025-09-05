@@ -3,12 +3,14 @@ import { PucService } from './puc/puc.service';
 import { CiiuService } from './ciiu/ciiu.service';
 import { UnspscService } from './unspsc/unspsc.service';
 import { TaxResponsibilitiesService } from './tax-responsibilities/tax-responsibilities.service';
+import { GeoService } from './geo/geo.service';
 
 const services = [
   PucService,
   CiiuService,
   UnspscService,
-  TaxResponsibilitiesService
+  TaxResponsibilitiesService,
+  GeoService
 ];
 
 @Global()
