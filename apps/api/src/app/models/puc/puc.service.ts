@@ -16,7 +16,7 @@ export class PucService {
 
   public async getAll(options?: { refresh?: boolean, search?: string }): Promise<PUCEntry[]> {
   
-    if (options.refresh || this.pucData.length === 0) {
+    if (options?.refresh || this.pucData.length === 0) {
       const rows: PUCEntry[] = (await this._dbConnectionService.query<{ code: string, name: string }>('SELECT code, name FROM data_puc')).rows.map(row => ({
         code: row.code,
         name: row.name,
