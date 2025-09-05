@@ -158,39 +158,39 @@ comment on column data_unspsc_segments.name is 'Nombre del segmento';
 create table data_unspsc_families
 (
   "code" char(4) primary key,
-  "segment" char(2),
+  "segment_code" char(2) references data_unspsc_segments(code),
   "name" varchar(200)
 );
 
 comment on table data_unspsc_families is 'Familias de la UNSPSC';
 comment on column data_unspsc_families.code is 'Código de la familia';
-comment on column data_unspsc_families.segment is 'Segmento al que pertenece';
+comment on column data_unspsc_families.segment_code is 'Segmento al que pertenece';
 comment on column data_unspsc_families.name is 'Nombre de la familia';
 
 create table data_unspsc_classes
 (
   "code" char(6) primary key,
-  "family" char(4),
+  "family_code" char(4) references data_unspsc_families(code),
   "name" varchar(200)
 );
 
 comment on table data_unspsc_classes is 'Clases de la UNSPSC';
 comment on column data_unspsc_classes.code is 'Código de la clase';
-comment on column data_unspsc_classes.family is 'Familia a la que pertenece';
+comment on column data_unspsc_classes.family_code is 'Familia a la que pertenece';
 comment on column data_unspsc_classes.name is 'Nombre de la clase';
 
 -- Código de producto o servicios
-create table data_unspsc
+create table data_unspsc_codes
 (
   "code" char(8) primary key,
-  "class" char(6),
+  "class_code" char(6) references data_unspsc_classes(code),
   "name" varchar(200)
 );
 
-comment on table data_unspsc is 'Código de producto o servicios';
-comment on column data_unspsc.code is 'Código del producto o servicio';
-comment on column data_unspsc.class is 'Clase a la que pertenece';
-comment on column data_unspsc.name is 'Nombre del producto o servicio';
+comment on table data_unspsc_codes is 'Código de producto o servicios';
+comment on column data_unspsc_codes.code is 'Código del producto o servicio';
+comment on column data_unspsc_codes.class_code is 'Clase a la que pertenece';
+comment on column data_unspsc_codes.name is 'Nombre del producto o servicio';
 
 create table data_tax_id_types 
 (
