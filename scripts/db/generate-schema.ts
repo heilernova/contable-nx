@@ -192,6 +192,25 @@ export const generateSchema = async (options?: { includeData?: boolean }) => {
       const name = row[1].replace(/'/g, "''").replace(/"/g, '""').replace(/[\r\n\t]/g, ' ').trim();
       schemaBase += `INSERT INTO data_puc ("code", "name") VALUES ('${row[0]}', '${name}');\n`;
     });
+
+    // Departamentos y ciudades
+    const urlDepartments = 'https://raw.githubusercontent.com/heilernova/colombia-data/refs/heads/main/geo/departments.csv';
+    const departments: [string, string][] = await extractData(urlDepartments);
+    schemaBase += '\n\n-- Departamentos\n';
+    schemaBase += `\n\n-- Fuente: ${urlDepartments}\n`;
+    departments.forEach((row) => {
+      schemaBase += `INSERT INTO data_geo_departments ("code", "name") VALUES ('${row[0]}', '${row[1]}');\n`;
+    });
+
+    const urlCities = 'https://raw.githubusercontent.com/heilernova/colombia-data/refs/heads/main/geo/municipalities.csv';
+    const cities: [string, string, string][] = await extractData(urlCities);
+    schemaBase += '\n\n-- Ciudades\n';
+    schemaBase += `\n\n-- Fuente: ${urlCities}\n`;
+    cities.forEach((row) => {
+      console.log(`INSERT INTO data_geo_municipalities ("code", "department_code", "name") VALUES ('${row[0]}', '${row[0].substring(0, 2)}', '${row[1]}');\n`);
+      schemaBase += `INSERT INTO data_geo_municipalities ("code", "department_code", "name") VALUES ('${row[0]}', '${row[0].substring(0, 2)}', '${row[1]}');\n`;
+    });
+
   }
 
   return schemaBase;
