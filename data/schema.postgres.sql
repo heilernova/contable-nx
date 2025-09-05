@@ -204,27 +204,26 @@ comment on column data_tax_id_types.code is 'Código del documento asignado por 
 comment on column data_tax_id_types.name is 'Nombre del tipo de documento';
 comment on column data_tax_id_types.short_name is 'Nombre corto del documento tipo de documento';
 
-create table data_location_departments
+create table data_geo_departments
 (
   "code" char(2) primary key,
-  "name" varchar(100)
+  "name" varchar(100) not null
 );
 
-comment on table data_location_departments is 'Departamentos de Colombia';
-comment on column data_location_departments.code is 'Código del departamento';
-comment on column data_location_departments.name is 'Nombre del departamento';
+comment on table data_geo_departments is 'Departamentos de Colombia';
+comment on column data_geo_departments.code is 'Código del departamento';
+comment on column data_geo_departments.name is 'Nombre del departamento';
 
-create table data_location_cities
-(
+create table data_geo_municipalities (
   "code" char(5) primary key,
-  "department_code" char(2),
+  "department_code" char(2) references data_geo_departments(code),
   "name" varchar(100)
 );
 
-comment on table data_location_cities is 'Ciudades de Colombia';
-comment on column data_location_cities.code is 'Código de la ciudad';
-comment on column data_location_cities.department_code is 'Código del departamento al que pertenece';
-comment on column data_location_cities.name is 'Nombre de la ciudad';
+comment on table data_geo_municipalities is 'Ciudades de Colombia';
+comment on column data_geo_municipalities.code is 'Código de la ciudad';
+comment on column data_geo_municipalities.department_code is 'Código del departamento al que pertenece';
+comment on column data_geo_municipalities.name is 'Nombre de la ciudad';
 
 create table data_taxes 
 (
