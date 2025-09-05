@@ -5,7 +5,7 @@
     "moduleResolution": "nodenext",
     "resolveJsonModule": false,
     "module": "nodenext",
-    "types": ["node"],
+    "types": ["node", "jest"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "target": "es2024"
