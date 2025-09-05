@@ -99,3 +99,20 @@ And join the Nx community:
 - [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
 - [Our Youtube channel](https://www.youtube.com/@nxdevtools)
 - [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+## Comandos de consola para Nest
+
+Controladores
+```
+npx nx generate @nestjs/schematics:controller --name=<name> --sourceRoot=apps/api/src/app --no-interactive
+```
+
+Módulos
+```
+ npx nx generate @nestjs/schematics:module --name=<name> --sourceRoot=apps/api/src/app --no-interactive --dry-run
+```
+
+Servicios
+```
+npx nx generate @nestjs/schematics:service --name=<name> --sourceRoot=apps/api/src/app --no-interactive
+```
