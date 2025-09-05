@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { PucController } from './puc/puc.controller';
 
-@Module({})
+@Module({
+  controllers: [PucController]
+})
 export class ControllersModule {}
