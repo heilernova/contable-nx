@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@contable/core": ["packages/core/src/index.ts"]
+      "@contable/core/*": ["packages/core/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
