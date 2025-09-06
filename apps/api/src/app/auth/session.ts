@@ -1,13 +1,13 @@
 export class Session {
   public readonly username: string;
   public readonly sub: string
-  public readonly role: 'admin' | 'user';
+  public readonly role: 'admin' | 'collaborator' | 'customer';
   public readonly permissions: string[];
 
   constructor(data: {
     username: string,
     sub: string,
-    role: 'admin' | 'user',
+    role: 'admin' | 'collaborator' | 'customer',
     permissions: string[]
   }) {
     this.username = data.username;
