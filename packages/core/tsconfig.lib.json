@@ -3,6 +3,10 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "declaration": true,
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
+    "target": "ES2024",
+    "lib": ["ES2024"],
     "types": ["node"]
   },
   "include": ["src/**/*.ts"],
